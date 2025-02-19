@@ -12,7 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->id();
+            $table->id('event_id');
+            $table->date('date');
+            $table->string('venue')->default('TELLUS');
+            $table->string('title')->nullable();
+            $table->time('open_time')->nullable();
+            $table->time('start_time')->nullable();
+            $table->integer('ticket_price')->nullable();
+            $table->integer('streaming_ticket_price')->nullable();
+            $table->enum('status', ['決定', 'NG', 'オファー中'])->default('オファー中');
             $table->timestamps();
         });
     }
