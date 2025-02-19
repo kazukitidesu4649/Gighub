@@ -16,9 +16,10 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
+            <!-- ナビゲーション -->
             @include('layouts.navigation')
 
-            <!-- Page Heading -->
+            <!-- ページヘッダー -->
             @if (isset($header))
                 <header class="bg-white shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -27,9 +28,21 @@
                 </header>
             @endif
 
-            <!-- Page Content -->
+            <!-- ページコンテンツ -->
             <main>
-                {{ $slot }}
+                <!-- エラーメッセージ表示 -->
+                 @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>          
+                 @endif
+
+                <!-- コンテンツを挿入する部分 -->
+                @yield('content')
             </main>
         </div>
     </body>

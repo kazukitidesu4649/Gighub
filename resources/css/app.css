@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.navbar-nav {
+  display: flex;
+  justify-content: space-between; /* 等間隔に配置 */
+  width: 100%;
+  padding: 0;
+}
+
+.navbar-nav .nav-item {
+  margin: 0 20px; /* アイテム間の間隔を調整 */
+}

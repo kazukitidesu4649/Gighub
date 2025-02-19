@@ -16,10 +16,11 @@ return new class extends Migration
             $table->date('date');
             $table->string('venue')->default('TELLUS');
             $table->string('title')->nullable();
-            $table->time('open_time')->nullable();
-            $table->time('start_time')->nullable();
-            $table->integer('ticket_price')->nullable();
-            $table->integer('streaming_ticket_price')->nullable();
+            $table->time('open')->nullable();
+            $table->time('start')->nullable();
+            $table->integer('ticket')->nullable();
+            $table->integer('stream_ticket')->nullable();
+            $table->text('stream_url')->nullable();
             $table->enum('status', ['決定', 'NG', 'オファー中'])->default('オファー中');
             $table->timestamps();
         });

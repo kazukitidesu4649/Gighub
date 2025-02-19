@@ -21,7 +21,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('event.create');
+        return view('events.create');
     }
 
     /**
@@ -34,9 +34,9 @@ class EventController extends Controller
             'title' => 'required|string|max:255',
             'open' => 'nullable',
             'start' => 'nullable',
-            'ticket_price' => 'nullable|integer',
-            'stream_ticket_price' => 'nullable|integer',
-            'stream_ticket_url' => 'nullable|url',
+            'ticket' => 'nullable|integer',
+            'stream_ticket' => 'nullable|integer',
+            'stream_url' => 'nullable|url',
             'status' => 'required|in:決定,NG,オファー中'
         ]);
 
@@ -56,8 +56,9 @@ class EventController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Event $event)
+    public function edit($eventId)
     {
+        $event = Event::findOrFail($eventId);
         return view('events.edit', compact('event'));
     }
 
@@ -71,9 +72,9 @@ class EventController extends Controller
             'title' => 'required|string|max:255',
             'open' => 'nullable',
             'start' => 'nullable',
-            'ticket_price' => 'nullable|integer',
-            'stream_ticket_price' => 'nullable|integer',
-            'stream_ticket_url' => 'nullable|url',
+            'ticket' => 'nullable|integer',
+            'stream_ticket' => 'nullable|integer',
+            'stream_url' => 'nullable|url',
             'status' => 'required|in:決定,NG,オファー中'
         ]);
 
